@@ -2,12 +2,14 @@
 
 This is a simple React application created for a performance assessment.
 
-The app displays a birthday cake and allows the user to click a button to add candle emojis. Each click increases the number of candles shown on the screen.
+The app displays a birthday cake and allows the user to click buttons to add or remove candle emojis. Each click updates the number of candles shown on the screen.
 
 ## Features
 - React button component
 - Click event handling
 - React state using useState
+- Add Candle button to increase the number of candles
+- Remove Candle button to decrease the number of candles
 - Dynamic candle display
 
 ## How to Run the Application Locally

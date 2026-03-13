@@ -8,6 +8,12 @@ const Button = () => {
     setAge(age + 1);
   };
 
+  const handleRemove = () => {
+    if (age > 0) {
+      setAge(age - 1);
+    }
+  };
+
   return (
     <div style={{ textAlign: "center", marginTop: "60px" }}>
 
@@ -16,6 +22,7 @@ const Button = () => {
       <p>Age: {age}</p>
 
       <button onClick={handleClick}>Add Candle</button>
+      <button onClick={handleRemove}>Remove Candle</button>
 
       <p>{"🕯️".repeat(age)}</p>
 
@@ -23,7 +30,6 @@ const Button = () => {
 
     </div>
   );
-
 };
 
 export default Button;
