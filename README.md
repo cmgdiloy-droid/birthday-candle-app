@@ -2,6 +2,9 @@
 
 A simple React app that allows users to add or remove birthday candles to represent age.
 
+## Live Demo
+https://birthday-candle-app.vercel.app/
+
 ## Features
 - Increment and decrement age
 - Display candles dynamically using emojis
