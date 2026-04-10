@@ -1,35 +1,65 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import "./App.css";
 
-const Button = () => {
-
+function BirthdayCounter() {
   const [age, setAge] = useState(0);
 
-  const handleClick = () => {
-    setAge(age + 1);
+  // Load saved age
+  useEffect(() => {
+    const savedAge = localStorage.getItem("age");
+    if (savedAge) setAge(Number(savedAge));
+  }, []);
+
+  // Save age
+  useEffect(() => {
+    localStorage.setItem("age", age);
+  }, [age]);
+
+  const addCandle = () => {
+    if (age < 120) setAge(age + 1);
   };
 
-  const handleRemove = () => {
-    if (age > 0) {
-      setAge(age - 1);
+  const removeCandle = () => {
+    if (age > 0) setAge(age - 1);
+  };
+
+  const handleInput = (e) => {
+    const value = Number(e.target.value);
+    if (value >= 0 && value <= 120) {
+      setAge(value);
     }
   };
 
   return (
-    <div style={{ textAlign: "center", marginTop: "60px" }}>
-
+    <div className="container">
       <h2>Birthday Candle Counter</h2>
 
-      <p>Age: {age}</p>
+      <p className="age-text">Age: {age}</p>
 
-      <button onClick={handleClick}>Add Candle</button>
-      <button onClick={handleRemove}>Remove Candle</button>
+      <input
+        type="number"
+        value={age}
+        onChange={handleInput}
+        className="input"
+      />
 
-      <p>{"🕯️".repeat(age)}</p>
+      <div className="button-group">
+        <button onClick={addCandle}>Add Candle</button>
+        <button onClick={removeCandle}>Remove Candle</button>
+        <button onClick={() => setAge(0)}>Reset</button>
+      </div>
 
-      <p>🎂</p>
+      <p className="message">
+        {age === 0 ? "Add candles 🎉" : `Turning ${age}!`}
+      </p>
 
+      <div className="candles">
+        {"🕯️".repeat(age)}
+      </div>
+
+      <p className="cake">🎂</p>
     </div>
   );
-};
+}
 
-export default Button;
+export default BirthdayCounter;
